@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_SESSION['user_email'] = $email; // Store user email in session
 
-    header("Location:congratulations.html"); // Redirect
+    header("congratulations.html"); // Redirect
     exit();
 }
 ?>
