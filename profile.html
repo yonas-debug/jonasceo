@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JO Educational Consultancy - Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Profile</h1>
+        <div id="profileDetails">
+            <!-- Profile details will be displayed here -->
+        </div>
+        <p><a href="events.html">View Upcoming Events</a></p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileDetailsDiv = document.getElementById('profileDetails');
+            // const user = JSON.parse(localStorage.getItem('currentUser'));
+
+            // Check php session to verify if user exist
+            <?php session_start();
+            if (!isset($_SESSION['user_email'])) {?>
+                profileDetailsDiv.innerHTML = "<p>Please sign in to view your profile.</p>";
+                window.location.href = 'signin.html'; // Redirect if not signed in
+            <?php }else{?>
+                profileDetailsDiv.innerHTML = "<p><strong>Email:</strong> <?php echo $_SESSION['user_email'] ?></p>";
+            <?php }?>
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'signin.html';
+        }
+    </script>
+</body>
+</html>

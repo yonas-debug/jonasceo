@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <ul id="eventList">
+            <!-- Events will be dynamically added here -->
+        </ul>
+        <p><a href="profile.html">Back to Profile</a></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventList = document.getElementById('eventList');
+            const events = [
+                { title: 'Study Abroad Seminar', date: '2024-03-15', description: 'Learn about opportunities to study abroad.' },
+                { title: 'Career Counseling Workshop', date: '2024-04-20', description: 'Get personalized career guidance.' },
+                { title: 'Scholarship Information Session', date: '2024-05-10', description: 'Find out about available scholarships.' }
+            ];
+
+            events.forEach(event => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <h3>${event.title}</h3>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p>${event.description}</p>
+                `;
+                eventList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>
